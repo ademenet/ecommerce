@@ -18,7 +18,7 @@ $create_table_game = "CREATE TABLE jeux
 $create_table_user = "CREATE TABLE user
 	(
 		login VARCHAR(100),
-		passwd	VARCHAR(500),
+		passwd VARCHAR(500),
 		prenom VARCHAR(100),
 		nom VARCHAR(100),
 		telephone VARCHAR(100),

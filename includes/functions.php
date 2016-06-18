@@ -54,6 +54,45 @@ function check_user($login) {
 	}
 }
 
+// les fonctions check_login et check_passwd renvoient TRUE si le mot de passe ou le login user n'existe pas ou est errone et FALSE sinon.
+function check_login($login) {
+	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$search = mysqli_query($base, "SELECT login FROM user WHERE login = '$login'");
+	while($data = mysqli_fetch_assoc($search)) {
+		if ($data['login'] === $login) {
+			return FALSE;
+		}
+	}
+	mysqli_free_result($search);
+	return TRUE;
+}
+
+function check_passwd($passwd) {
+	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$search = mysqli_query($base, "SELECT passwd FROM user WHERE 1");
+	$passwd = hash('whirlpool', $passwd);
+	while($data = mysqli_fetch_assoc($search)) {
+		if ($data['passwd'] === $passwd) {
+			return FALSE;
+		}
+	}
+	mysqli_free_result($search);
+	return TRUE;
+}
+
+function check_admin($login) {
+	// $base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	// $search = mysqli_query($base, "SELECT login FROM user WHERE login = '$login'");
+	// while($data = mysqli_fetch_assoc($search)) {
+	// 	if ($data === $login) {
+	// 		echo "FALSE!";
+	// 		return FALSE;
+	// 	}
+	// }
+	// mysqli_free_result($search);
+	return TRUE;
+}
+
 function rm_product($name)
 {
 	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');

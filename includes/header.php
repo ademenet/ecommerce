@@ -1,3 +1,13 @@
+<?php session_start();
+
+if (isset($_GET['action'])) {
+	if ($_GET['action'] === 'logout') {
+		$_SESSION['user'] = "";
+		$_SESSION['admin'] = "";
+		header('Location: index.php');
+	}
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,8 +25,17 @@
 				<li><a href="index.php">Accueil</a></li>
 				<li><a href="boutique.php">Boutique</a></li>
 				<li><a href="panier.php">Panier</a></li>
+				<?php if ($_SESSION['user']) { ?>
+				<li><a href="compte.php">Mon compte</a></li>
+				<li><a href="?action=logout">Log out</a></li>
+				<?php } elseif ($_SESSION['admin']) { ?>
+					<li><a href="admin.php">Admin</a></li>
+					<li><a href="?action=logout">Log out</a></li>
+				<?php }
+				else { ?>
 				<li><a href="inscription.php">Inscription</a></li>
 				<li><a href="login.php"; ?>Connexion</a></li>
+				<?php } ?>
 			</ulclass>
 		</nav>
 	</header>
