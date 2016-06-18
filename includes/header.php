@@ -25,10 +25,10 @@ if (isset($_GET['action'])) {
 				<li><a href="index.php">Accueil</a></li>
 				<li><a href="boutique.php">Boutique</a></li>
 				<li><a href="panier.php">Panier</a></li>
-				<?php if ($_SESSION['user']) { ?>
+				<?php if ($_SESSION['user'] == 1) { ?>
 				<li><a href="compte.php">Mon compte</a></li>
 				<li><a href="?action=logout">Log out</a></li>
-				<?php } elseif ($_SESSION['admin']) { ?>
+				<?php } elseif ($_SESSION['admin'] == 1) { ?>
 					<li><a href="admin.php">Admin</a></li>
 					<li><a href="?action=logout">Log out</a></li>
 				<?php }

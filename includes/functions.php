@@ -81,16 +81,11 @@ function check_passwd($passwd) {
 }
 
 function check_admin($login) {
-	// $base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
-	// $search = mysqli_query($base, "SELECT login FROM user WHERE login = '$login'");
-	// while($data = mysqli_fetch_assoc($search)) {
-	// 	if ($data === $login) {
-	// 		echo "FALSE!";
-	// 		return FALSE;
-	// 	}
-	// }
-	// mysqli_free_result($search);
-	return TRUE;
+	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$search = mysqli_query($base, "SELECT admin FROM user WHERE login = '$login'");
+	$data = mysqli_fetch_assoc($search);
+	mysqli_free_result($search);
+	return $data['admin'];
 }
 
 function rm_product($name)

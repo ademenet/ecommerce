@@ -15,9 +15,7 @@ if ($_POST['submit'] === "Connexion") {
 		} else {
 			if (check_admin($_POST['usrlog'])) {
 				$_SESSION['admin'] = 1;
-				$_SESSION['user'] = 0;
 			} else {
-				$_SESSION['admin'] = 0;
 				$_SESSION['user'] = 1;
 			}
 			header('Location: index.php');
