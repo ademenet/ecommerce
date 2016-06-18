@@ -69,3 +69,5 @@ if (isset($_SESSION['admin'])) {
 	</div>
 
 </div>
+
+<?php require_once('./includes/footer.php'); ?>

@@ -3,22 +3,20 @@ session_start();
 
 include('includes/functions.php');
 
-$_SESSION['admin'] = "";
-$_SESSION['user'] = "";
+$_SESSION['userinfo'] = "";
 
 if ($_POST['submit'] === "Connexion") {
 	if (isset($_POST['usrlog']) && isset($_POST['usrpwd']) && !empty($_POST['usrlog']) && !empty($_POST['usrpwd'])) {
 		if (check_login($_POST['usrlog'])) {
-			alert("Désolé, ce n'est pas le bon login");
-		} if (check_passwd($_POST['usrpwd'])) {
-			alert("Désolé, ce n'est pas le bon mot de passe");
-		} else {
-			if (check_admin($_POST['usrlog'])) {
-				$_SESSION['admin'] = 1;
+			if (!check_passwd($_POST['usrlog'], $_POST['usrpwd'])) {
+				alert("#déso, ce n'est pas le bon mot de passe");
 			} else {
-				$_SESSION['user'] = 1;
+				$_SESSION['userinfo'] = get_userinfos($_POST['usrlog']);
+				valid("Bienvenue ".$_SESSION['userinfo']." sur we&#10084games");
+				echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 			}
-			header('Location: index.php');
+		} else {
+			alert("#déso, ce n'est pas le bon login");
 		}
 	}
 	else {
