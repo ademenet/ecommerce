@@ -38,8 +38,10 @@ $insert_game = "INSERT INTO jeux (id, nom, stock, prix, ps4, xboxone, gamecube, 
 	('8', 'Wario World', '50', '35', '0' , '0', '0', '1', 'bon jeux de merde', 'img/2327-1.jpg', 'arcade'),
 	('9', 'Wallace & Gromit in Project Zoo', '50', '35', '0' , '0', '1', '1', 'bon jeux de merde', 'img/30934-1.jpg', 'aventure')";
 
+$admpwd = hash('whirlpool', "123");
+
 $insert_admin = "INSERT INTO user (login, passwd, prenom, nom, telephone, mail, adresse, admin) VALUES
-	('admin','123','','','','','', '1')";
+	('admin','".$admpwd."','','','','','', '1')";
 
 $base = mysqli_connect('localhost', 'root', 'peer2peer');
 mysqli_query($base, "CREATE DATABASE myDB");
