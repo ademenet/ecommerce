@@ -17,14 +17,14 @@ $create_table_game = "CREATE TABLE jeux
 
 $create_table_user = "CREATE TABLE user
 	(
-		admin BOOLEAN,
 		login VARCHAR(100),
 		passwd	VARCHAR(100),
 		prenom VARCHAR(100),
 		nom VARCHAR(100),
 		telephone VARCHAR(100),
 		mail VARCHAR(500),
-		adresse VARCHAR(200)
+		adresse VARCHAR(200),
+		admin BOOLEAN
 	)";
 
 $insert_game = "INSERT INTO jeux (id, nom, stock, prix, ps4, xboxone, gamecube, ds, description, img, genre) VALUES
@@ -38,8 +38,8 @@ $insert_game = "INSERT INTO jeux (id, nom, stock, prix, ps4, xboxone, gamecube, 
 	('8', 'Wario World', '50', '35', '0' , '0', '0', '1', 'bon jeux de merde', 'img/2327-1.jpg', 'arcade'),
 	('9', 'Wallace & Gromit in Project Zoo', '50', '35', '0' , '0', '1', '1', 'bon jeux de merde', 'img/30934-1.jpg', 'aventure')";
 
-$insert_admin = "INSERT INTO user (admin, login, passwd, prenom, nom, telephone, mail, adresse) VALUES
-	('1','admin','123','','','','','')";
+$insert_admin = "INSERT INTO user (login, passwd, prenom, nom, telephone, mail, adresse, admin) VALUES
+	('admin','123','','','','','', '1')";
 
 $base = mysqli_connect('localhost', 'root', 'peer2peer');
 mysqli_query($base, "CREATE DATABASE myDB");

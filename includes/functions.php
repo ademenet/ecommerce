@@ -19,7 +19,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 function add_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr) {
 	if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr)) {
 		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
-		$query = "INSERT INTO user VALUES('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."')";
+		$query = "INSERT INTO user VALUES ('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."', '0')";
 		mysqli_query($base, $query);
 	} else {
 		return;
