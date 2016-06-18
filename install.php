@@ -41,10 +41,10 @@ $insert_game = "INSERT INTO jeux (id, nom, stock, prix, ps4, xboxone, gamecube, 
 $insert_admin = "INSERT INTO user (admin, login, passwd, prenom, nom, telephone, mail, adresse) VALUES
 	('1','admin','123','','','','','')";
 
-$base = mysqli_connect('localhost', 'root', 'peer2peer');
+$base = mysqli_connect('localhost', 'root', '');
 mysqli_query($base, "CREATE DATABASE myDB");
 mysqli_close($base);
-$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+$base = mysqli_connect('localhost', 'root', '', 'myDB');
 mysqli_query($base, $create_table_game);
 mysqli_query($base, $create_table_user);
 $ret = mysqli_query($base, $insert_game);

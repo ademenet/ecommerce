@@ -1,0 +1,84 @@
+
+body
+{
+	background-color: #B0FFFF;
+	text-align:center;
+}
+.object
+{
+	float:left;
+	width:300px;
+	min-height:200px;
+	border:5px solid #B0EEEE;
+	border-radius:15px;
+	text-align:center;
+	padding:5px;
+	margin:2px;
+	background-image:linear-gradient(60deg, white, rgb(144,202,249));
+
+}
+.img_vignette{
+	padding-right:50px;
+	padding-left:50px;
+}
+.game_name
+{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.menu_boutique
+{
+	width:20%;
+	margin:auto;
+	text-align:center;
+	float:left;
+	border-right:1px solid black;
+	background-color: #90CAF9;
+	height:1000px;
+}
+.prix
+{
+	margin:10px;
+}
+
+.vignette
+{
+	margin:20px;
+	border:2px solid black;
+	border-radius:10px;
+	width:90%;
+	height:50px;
+}
+
+.arcade
+{
+	margin:auto;
+	text-align:center;
+	border:2px solid black;
+	border-radius:10px;
+	background-image:url("../img/arcade.jpg");
+	width:90%;
+	height:50px;
+}
+.ajouter_panier
+{
+	border:2px solid black;
+	border-radius:9px;
+	display:block;
+	background-color:white;
+	padding:10px;
+}
+
+.ajouter_panier:visited
+{
+color:black;
+	border:2px solid black;
+	border-radius:9px;
+	display:block;
+	background-color:white;
+	padding:10px;
+}
+.global_box
+{
+	text-align:center;
+}
