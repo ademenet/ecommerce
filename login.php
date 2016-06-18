@@ -2,6 +2,7 @@
 session_start();
 
 $_SESSION['admin'] = "";
+$_SESSION['user'] = "";
 
 if ($_POST['submit'] === "Connexion") {
 	if (isset($_POST['admlog']) && isset($_POST['admpwd']) && !empty($_POST['admlog']) && !empty($_POST['admpwd']))

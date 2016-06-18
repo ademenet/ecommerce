@@ -18,6 +18,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 
 function add_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr) {
 	if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr)) {
+		$passwd = hash('whirlpool', $passwd);
 		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
 		$query = "INSERT INTO user VALUES ('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."', '0')";
 		mysqli_query($base, $query);
@@ -39,6 +40,7 @@ function check_user($login) {
 	} else {
 		return FALSE;
 	}
+}
 
 function rm_product($name)
 {
