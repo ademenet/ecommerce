@@ -5,6 +5,18 @@ function ft_error($err='') {
 	exit ('<p>'.$mess.'</p><p>Cliquez <a href="./index.php">ici</a> pour revenir à la page d\'accueil</p>');
 }
 
+function alert($msg) {
+	if ($msg) {
+		echo "<div class=\"box-alert\">". $msg ."</div>";
+	}
+}
+
+function valid($msg) {
+	if ($msg) {
+		echo "<div class=\"box-valid\">". $msg ."</div>";
+	}
+}
+
 function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $genre, $stock)
 {
 	if (!isset($name) || !isset($price) || !isset($stock))

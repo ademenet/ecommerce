@@ -12,13 +12,13 @@ if ($_POST['submit'] === "Connexion") {
 			header('Location: admin.php');
 		}
 		elseif ($_POST['admlog'] !== $admlogin) {
-			echo "<div class=\"box-alert\">Désolé, ce n'est pas le bon login</div>";
+			alert("Désolé, ce n'est pas le bon login");
 		}
 		elseif ($_POST['admpwd'] !== $admpasswd) {
-			echo "<div class=\"box-alert\">Désolé, ce n'est pas le bon mot de passe</div>";
+			alert("Désolé, ce n'est pas le bon mot de passe");
 		}
 	} else {
-		echo "<div class=\"box-alert\">Veuillez remplir tous les champs</div>";
+		alert("Veuillez remplir tous les champs");
 	}
 }
  ?>
