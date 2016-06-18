@@ -39,5 +39,17 @@ function check_user($login) {
 	} else {
 		return FALSE;
 	}
+
+function rm_product($name)
+{
+	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$query = "DELETE FROM jeux WHERE nom = \"".$name."\";";
+	$result = mysqli_query($base, $query);
+/*	while ($row = mysqli_fetch_assoc($result))
+	{
+		echo "<br />";
+		print_r($row);
+	}
+ */
 }
  ?>

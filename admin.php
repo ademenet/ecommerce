@@ -13,13 +13,9 @@ include("./includes/functions.php");
 <div class="admin-panel">
 	<h1>Bienvenue <?php echo $_SESSION['admin']; ?></h1>
 	<div class="">
-		<a href="?action=add">Ajouter un produit</a>
 
 <?php
 // On repere si on est bien en session d'admin
-$_SESSION['admin'] = "ok";
-$_GET['action'] = "add";
-add_product($_POST['title'], $_POST['price'], $_POST['desc'],0,0,0,1,"../zbri","foot", 42);
 if (isset($_SESSION['admin'])) {
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'add') {
@@ -39,7 +35,6 @@ if (isset($_SESSION['admin'])) {
 	<p>Description : <input type="text" name="desc" value=""></p><br />
 	<p>Prix : <input type="text" name="price" value=""></p>
 	<input type="submit" name="Ajouter" value="OK">
-
 </form>
 
 <?php
@@ -48,6 +43,16 @@ if (isset($_SESSION['admin'])) {
 
 		}
 		elseif ($_GET['action'] == delete) {
+			if ($_POST['delete'] == "OK" && isset($_POST['deleted_game']))
+			{
+				rm_product($_POST['deleted_game']);
+			}
+?>
+	<form action="" method="post">
+		<p>Nom du produit a suprimer : <input type="text" name="deleted_game" value="Barbie land" /></p>
+		<input type="submit" name="delete" value="OK" />
+	</form>
+<?php
 
 		}
 		else {
@@ -58,6 +63,7 @@ if (isset($_SESSION['admin'])) {
 	header('Location: ../index.php');
 }
  ?>
+		<a href="?action=add">Ajouter un produit</a>
 		<a href="?action=modify">Modifier un produit</a>
 		<a href="?action=delete">Supprimer un produit</a>
 	</div>
