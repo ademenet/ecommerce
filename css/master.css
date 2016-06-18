@@ -1,0 +1,18 @@
+@import url("header.css");
+@import url("footer.css");
+@import url("admin.css");
+@import url("form.css");
+@import url("misc.css");
+
+/* General */
+* {
+	margin: 0;
+}
+body {
+	font-family: sans-serif, serif;
+	margin: 0;
+	width: 100%;
+}
+html, body {
+	height: 100%;
+}

@@ -1,0 +1,31 @@
+/* La classe page-wrap permet de faire descendre le footer quelque soit le contenu du body */
+.page-wrap {
+	min-height: 100%;
+	/* correspond à la hauteur du footer */
+	margin-bottom: -60px;
+}
+.page-wrap:after {
+	content: "";
+	display: block;
+}
+.footer-site, .page-wrap:after {
+	height: 60px;
+}
+.footer-site {
+	background-color: #90CAF9;
+	line-height: 60px;
+}
+.footer-site p {
+	color: #F5F5F5;
+	font-weight: 200;
+	text-align: center;
+}
+footer ul li {
+	display: inline-block;
+	text-decoration: none;
+}
+.footer-links {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}

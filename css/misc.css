@@ -1,0 +1,17 @@
+/* Box alert */
+.box-alert {
+	color: white;
+	font-weight: 100;
+	font-family: sans-serif, serif;
+	background-color: #f44336;
+	padding: 20px;
+	margin-bottom: 15px;
+}
+.box-valid {
+	color: white;
+	font-weight: 100;
+	font-family: sans-serif, serif;
+	background-color: #7cb342;
+	padding: 20px;
+	margin-bottom: 15px;
+}
