@@ -16,7 +16,32 @@ else if ($_GET['submit'] == "Valider")
 	$query = "UPDATE user SET panier ='".$string."' WHERE login = '".$_SESSION['userinfo']['login']."'";
 	$ret = mysqli_query($base, $query);
 }
+if (isset($_GET['mod']))
+{
+	if ($_POST['submit'] == "Supprimer")
+	{
+		foreach($_SESSION['panier'] as $article)
+		{
+			if ($article['nom'] == $_GET['mod'])
+			{
+				array_splice($_SESSION['panier'], 1);
+			}
+			$count++;
+		}
+	}
+	else
+	{
+	
+	}
+}
 ?>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="css/panier.css" title="" type="" />
+	<title></title>
+	
+</head>
 <body>
 	<div class = "panier">
 		<?php
@@ -29,11 +54,14 @@ else if ($_GET['submit'] == "Valider")
 				$ret = mysqli_query($base, $query);
 				$donne = mysqli_fetch_array($ret);
 				$prix_total += $donne['prix'] * $article['quantity'];
-				echo "<div>";
-				echo "<h3>".$donne['nom']."</h3>";
+				echo "<div class = \"panier_box\">";
+				echo "<h3 class = \"game_name\">".$donne['nom']."</h3>";
 				echo "<p> description :".$donne['description']."</p>";
-				echo "<p>".$donne['prix']."</p>";
+				echo "<p>".$donne['prix']." euros</p>";
 				echo "<p> Quantite : ".$article['quantity']."</p>";
+				echo "<form action=\"?mod=".$donne['nom']."\" method=\"post\" accept-charset=\"utf-8\">";
+				echo "<input type=\"submit\" value=\"Supprimer\" />";
+				echo "</form>";
 				echo "<br />";
 				echo "</div>";
 			}

@@ -63,3 +63,11 @@ nav a:hover, a:active {
 	left: 85px;
 	top: 0
 }
+
+.apercu_panier
+{
+	width:100px;
+	height:60px;
+	float:right;
+	margin:20px;
+}

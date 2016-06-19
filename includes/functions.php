@@ -1,5 +1,29 @@
 <?php
-
+function get_nb_article(){
+	if (!isset($_SESSION['panier']))
+		return 0;
+	$count = 0;
+	foreach($_SESSION['panier'] as $article)
+	{
+		$count += $article['quantity'];
+	}
+	return $count;
+}
+function get_price()
+{
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
+	$prix_total = 0;
+		if (isset($_SESSION['panier'])) {
+			foreach($_SESSION['panier'] as $article)
+			{
+				$query = "SELECT * FROM jeux WHERE nom = \"".$article['name']."\"";
+				$ret = mysqli_query($base, $query);
+				$donne = mysqli_fetch_array($ret);
+				$prix_total += $donne['prix'] * $article['quantity'];
+			}
+		}
+	return $prix_total;
+}
 function secu($string) {
 	if(ctype_digit($string)) {
 		$string = intval($string);
