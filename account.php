@@ -7,6 +7,8 @@ if (isset($_GET['action'])) {
 		echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 		del_user($_SESSION['userinfo']['login']);
 		$_SESSION['userinfo'] = "";
+	} elseif ($_GET['action'] == 'moduser') {
+		include('./includes/inscription-form.php');
 	}
 }
  ?>
@@ -34,12 +36,13 @@ if (isset($_GET['action'])) {
 			</tr>
 			<tr>
 				<td>Téléphone</td>
-				<td><?php echo $_SESSION['userinfo']['tel']; ?></td>
+				<td><?php echo $_SESSION['userinfo']['telephone']; ?></td>
 			</tr>
 		</table>
 		<?php if ($_SESSION['userinfo']['admin'] != 1) {
-				echo "<a href=\"?action=deluser\">Supprimer mon compte</a>";
+				echo "<p><a href=\"?action=deluser\">Supprimer mon compte</a></p>";
 			}
+			echo "<p><a href=\"?action=moduser\">Modifier mon compte</a></p>";
 		} ?>
 	</div>
 </body>

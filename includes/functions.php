@@ -40,7 +40,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 	mysqli_query($base, $query);
 }
 
-function mod_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr, $admin) {
+function mod_user($oldlogin, $login, $passwd, $prenom, $nom, $tel, $mail, $adr, $admin) {
 	if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr) && isset($admin)) {
 		if ($admin == "admin") {
 			$admin = 1;
@@ -49,7 +49,7 @@ function mod_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr, $admin) {
 		}
 		$passwd = hash('whirlpool', $passwd);
 		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
-		$query = "UPDATE user SET login='$login', passwd='$passwd', prenom='$prenom', nom='$nom', telephone='$tel', mail='$mail', adresse='$adr', admin='$admin' WHERE login='$login'";
+		$query = "UPDATE user SET login='$login', passwd='$passwd', prenom='$prenom', nom='$nom', telephone='$tel', mail='$mail', adresse='$adr', admin='$admin' WHERE login='$oldlogin'";
 		return mysqli_query($base, $query);
 	} else {
 		return FALSE;
