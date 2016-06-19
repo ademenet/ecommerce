@@ -1,19 +1,25 @@
 <?php
 require_once('./includes/header.php');
 session_start();
-	if(isset($_GET['add']) && isset($_POST['quantite']))
+	if (!isset($_GET['add']))
+	{}
+	else if(isset($_GET['add']) && isset($_POST['quantite']) && is_numeric($_POST['quantite']) && intval($_POST['quantite']) > 0)
 	{
 		//print_r($_POST);
-		if (isset($_SESSION['panier']))
-		{
-			$_SESSION['panier'][] = array(
-				"name" => $_GET['add'],
-				"quantity" => $_POST['quantite']
-			);
-		}
-		else
-			$_SESSION['panier'] = array();
+			if (isset($_SESSION['panier']))
+			{
+				$_SESSION['panier'][] = array(
+					"name" => $_GET['add'],
+					"quantity" => $_POST['quantite']
+				);
+			}
+			else
+				$_SESSION['panier'] = array();
 	}
+	else if (isset($_POST['quantite']))
+		echo "<div class=\"box-alert\">Vous devez selectionner une quantite valide</div>";
+	else
+		echo "<div class=\"box-alert\">Vous devez rentrer une quantite</div>";
 	if (isset($_GET['selection']))
 	{
 		if ($_GET['selection'] === "sport")

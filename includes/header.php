@@ -35,7 +35,8 @@ if (isset($_GET['action'])) {
 					<li><a href="inscription.php">Inscription</a></li>
 					<li><a href="login.php"; ?>Connexion</a></li>
 				<?php } ?>
-			</ulclass>
+					<div class="apercu_panier"> Nombre article : <?php echo get_nb_article() ?> Prix :<?php echo  get_price()?>  </div>
+			</ul>
 		</nav>
 	</header>
 	<div class="page-wrap">
