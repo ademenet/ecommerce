@@ -24,7 +24,8 @@ $create_table_user = "CREATE TABLE user
 		telephone VARCHAR(100),
 		mail VARCHAR(500),
 		adresse VARCHAR(200),
-		admin BOOLEAN
+		admin BOOLEAN,
+		panier VARCHAR(100)
 	)";
 
 $create_gloabal = "CREATE TABLE global

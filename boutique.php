@@ -1,6 +1,20 @@
 <?php
 require_once('./includes/header.php');
 session_start();
+
+
+function check_name($name, $quantite)
+{
+	foreach($_SESSION['panier'] as &$elem)
+	{
+		if ($elem['name'] == $name)
+		{
+			$elem['quantity'] += $quantite;
+			return 1;
+		}
+	}
+	return 0;
+}
 	if (!isset($_GET['add']))
 	{}
 	else if(isset($_GET['add']) && isset($_POST['quantite']) && is_numeric($_POST['quantite']) && intval($_POST['quantite']) > 0)
@@ -8,10 +22,13 @@ session_start();
 		//print_r($_POST);
 			if (isset($_SESSION['panier']))
 			{
-				$_SESSION['panier'][] = array(
-					"name" => $_GET['add'],
-					"quantity" => $_POST['quantite']
-				);
+				if (!check_name($_GET['add'], $_POST['quantite']))
+				{
+					$_SESSION['panier'][] = array(
+						"name" => $_GET['add'],
+						"quantity" => $_POST['quantite']
+					);
+				}
 			}
 			else
 				$_SESSION['panier'] = array();

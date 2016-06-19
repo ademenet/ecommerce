@@ -1,7 +1,7 @@
 <?php
 require_once('./includes/header.php');
 session_start();
-if ($_GET['submit'] == "Supprimer")
+if ($_GET['submit'] == "Supprimer" && isset($_SESSION['userinfo']['login']))
 {
 	$_SESSION['panier'] = array();
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
@@ -9,29 +9,40 @@ if ($_GET['submit'] == "Supprimer")
 	$query = "UPDATE user SET panier ='".$string."' WHERE login = '".$_SESSION['userinfo']['login']."'";
 	$ret = mysqli_query($base, $query);
 }
-else if ($_GET['submit'] == "Valider")
+else if ($_GET['submit'] == "Valider" && isset($_SESSION['userinfo']['login']))
 {
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$string = serialize($_SESSION['panier']);
 	$query = "UPDATE user SET panier ='".$string."' WHERE login = '".$_SESSION['userinfo']['login']."'";
 	$ret = mysqli_query($base, $query);
 }
+else if ($_GET['submit'] == "Valider" || $_GET['submit'] == "Supprimer")
+{
+	alert("Vous devez vous connecter");
+}
 if (isset($_GET['mod']))
 {
 	if ($_POST['submit'] == "Supprimer")
 	{
-		foreach($_SESSION['panier'] as $article)
+		$count = 0;
+		foreach($_SESSION['panier'] as &$article)
 		{
-			if ($article['nom'] == $_GET['mod'])
+			if ($article['name'] == $_GET['mod'])
 			{
-				array_splice($_SESSION['panier'], 1);
+				break;
 			}
 			$count++;
 		}
+		array_splice($_SESSION['panier'], $count, 1);
 	}
-	else
+	else if ($_POST['submit'] == "Modifier" && is_numeric($_POST['new_qt']))
 	{
-	
+		$count = 0;
+		foreach($_SESSION['panier'] as &$article)
+		{
+			if ($article['name'] == $_GET['mod'])
+				$article['quantity'] = intval($_POST['new_qt']);
+		}
 	}
 }
 ?>
@@ -59,8 +70,10 @@ if (isset($_GET['mod']))
 				echo "<p> description :".$donne['description']."</p>";
 				echo "<p>".$donne['prix']." euros</p>";
 				echo "<p> Quantite : ".$article['quantity']."</p>";
-				echo "<form action=\"?mod=".$donne['nom']."\" method=\"post\" accept-charset=\"utf-8\">";
-				echo "<input type=\"submit\" value=\"Supprimer\" />";
+				echo "<form action=\"?mod=".$donne['nom']."\" method=\"POST\" accept-charset=\"utf-8\">";
+				echo "<p class=\"modifier_qt\">Modifie la quantite : <input type=\"text\" name=\"new_qt\" value=\"".$article['quantity']."\" /></p>";
+				echo "<input type=\"submit\"name = \"submit\"value=\"Supprimer\" />";
+				echo "<input type=\"submit\"name = \"submit\"value=\"Modifier\" />";
 				echo "</form>";
 				echo "<br />";
 				echo "</div>";

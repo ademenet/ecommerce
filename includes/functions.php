@@ -60,7 +60,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$row = mysqli_query($base, "SELECT * FROM jeux");
 	$id = mysqli_num_rows($row) + 1;
-	$query = "INSERT INTO jeux VALUES('".$id. "','" . $name . "','".$stock."','". $price. "','NULL','". $ps4."','".$xbox. "','".$gamecube."','". $ds . "','". $desc. "','". $genre . "','". $img."')";
+	$query = "INSERT INTO jeux VALUES('".secu($id). "','" .secu($name). "','".secu($stock)."','".secu($price). "','NULL','".secu($ps4)."','".secu($xbox). "','".secu($gamecube)."','".secu($ds). "','".secu($desc). "','".secu($genre). "','".secu($img)."')";
 	mysqli_query($base, $query);
 }
 
