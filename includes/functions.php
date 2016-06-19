@@ -81,14 +81,14 @@ function mod_user($oldlogin, $login, $passwd, $prenom, $nom, $tel, $mail, $adr, 
 }
 
 function add_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr) {
-	if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr)) {
+	//if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr)) {
 		$passwd = hash('whirlpool', $passwd);
 		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
 		$query = "INSERT INTO user VALUES ('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."', '0')";
 		return mysqli_query($base, $query);
-	} else {
-		return FALSE;
-	}
+//	} else {
+//		return FALSE;
+//	}
 }
 
 function check_user($login) {
@@ -169,6 +169,7 @@ function inscription_user() {
 				alert("Le format de votre mail n'est pas valide");
 			} else {
 				if (check_user(secu($_POST['usrlog']))) {
+					$print_r($_POST);
 					if (add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress'])) === FALSE) {
 						alert("Oups, we have a problem here");
 					} else {

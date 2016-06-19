@@ -15,9 +15,11 @@ else if ($_GET['submit'] == "Supprimer" && !isset($_SESSION['userinfo']['login']
 }
 else if ($_GET['submit'] == "Valider" && isset($_SESSION['userinfo']['login']))
 {
+	print("sa marche");
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$string = serialize($_SESSION['panier']);
 	$query = "UPDATE user SET panier ='".$string."' WHERE login = '".$_SESSION['userinfo']['login']."'";
+	print($query);
 	$ret = mysqli_query($base, $query);
 }
 else if ($_GET['submit'] == "Valider" || $_GET['submit'] == "Supprimer")
