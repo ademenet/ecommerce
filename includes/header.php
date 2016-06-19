@@ -24,7 +24,6 @@ if (isset($_GET['action'])) {
 				</div>
 				<ul class="menu">
 						<li><a href="index.php">Accueil</a></li>
-						<li><a href="boutique.php">Boutique</a></li>
 						<li><a href="panier.php">Panier</a></li>
 					<?php if ($_SESSION['userinfo'] !== "") { ?>
 						<li><a href="account.php">Mon compte</a></li>
