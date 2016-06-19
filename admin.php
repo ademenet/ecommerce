@@ -48,7 +48,7 @@ if ($_SESSION['userinfo']['admin'] !== "") {
 
 		}
 		else {
-			ft_error("déso");
+			ft_error();
 		}
 	}
 } else {
