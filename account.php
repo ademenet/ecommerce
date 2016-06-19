@@ -3,13 +3,14 @@
 <?php
 if (isset($_GET['action'])) {
 	echo "<script>confirm(\"Êtes-vous sûr de vouloir supprimer votre compte ?\")</script>";
+	echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 	del_user($_SESSION['userinfo']['login']);
 	$_SESSION['userinfo'] = "";
-	echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 }
  ?>
 
 <body>
+	<?php if ($_SESSION['userinfo'] != "") { ?>
 	<div class="user-account">
 		<h3>Administration du compte de <?php echo $_SESSION['userinfo']['login'] ?></h3>
 		<table>
@@ -35,6 +36,7 @@ if (isset($_GET['action'])) {
 			</tr>
 		</table>
 		<a href="?action=deluser">Supprimer mon compte</a>
+		<?php } ?>
 	</div>
 </body>
 

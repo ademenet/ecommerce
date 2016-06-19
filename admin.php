@@ -56,7 +56,7 @@ if (isset($_SESSION['admin'])) {
 
 		}
 		else {
-			ft_error();
+			ft_error("déso");
 		}
 	}
 } else {

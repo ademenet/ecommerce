@@ -1,5 +1,16 @@
 <?php
-// Cette fonction prend un texte en parametre et retourne un message d'erreur.
+
+function security_check($string) {
+	if(ctype_digit($string)) {
+		$string = intval($string);
+	}
+	else {
+		$string = mysql_real_escape_string($string);
+		$string = addcslashes($string, '%_');
+	}
+	return $string;
+}
+
 function ft_error($err='') {
 	$mess = ($err != '') ? $err : "Une erreur inédite s'est produite.";
 	exit ('<p>'.$mess.'</p><p>Cliquez <a href="./index.php">ici</a> pour revenir à la page d\'accueil</p>');
@@ -21,7 +32,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 {
 	if (!isset($name) || !isset($price) || !isset($stock))
 		return;
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$row = mysqli_query($base, "SELECT * FROM jeux");
 	$id = mysqli_num_rows($row) + 1;
 	$query = "INSERT INTO jeux VALUES('".$id. "','" . $name . "','".$stock."','". $price. "','NULL','". $ps4."','".$xbox. "','".$gamecube."','". $ds . "','". $desc. "','". $genre . "','". $img."')";
@@ -104,4 +115,5 @@ function rm_product($name)
 	}
  */
 }
+
  ?>
