@@ -72,10 +72,9 @@ if ($_SESSION['userinfo']['admin'] !== "") {
 	header('Location: ../index.php');
 }
  ?>
-		<a href="?action=add">Ajouter un produit</a>
-		<a href="?action=modify">Modifier un produit</a>
-		<a href="?action=delete">Supprimer un produit</a>
-		<?php require_once('./admin-users.php') ?>
+		<a href="ajouter_article.php">Ajouter un produit</a>
+		<a href="modifier_article.php">Modifier un produit</a>
+		<a href="rm_add.php">Supprimer un produit</a>
 	</div>
 </div>
 

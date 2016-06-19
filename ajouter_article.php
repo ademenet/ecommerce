@@ -1,22 +1,12 @@
 <?php
 require_once('./includes/header.php');
-include('includes/functions.php');
 
-function verifie_cons($cons)
-{
-	foreach (explode(":", $_POST['platform']) as $plat)
-	{
-		if ($plat === $cons)
-			return 1;
-	}
-	return 0;
-}
 $query = "SELECT * FROM jeux";
 	if (isset($_POST['submit']))
 	{
 		if(!isset($_POST['nom']))
 			echo "<div class=\"box-alert\">Vous devez selectionner un nom</div>";
-		else if(!isset($_POST['prix']))
+		else if(!isset($_POST['prix']) || !is_numeric($_POST['prix']))
 			echo "<div class=\"box-alert\">Vous devez selectionner le prix</div>";
 		else if(!isset($_POST['platform']))
 			echo "<div class=\"box-alert\">Vous devez selectionner la/les platforme(s)</div>";

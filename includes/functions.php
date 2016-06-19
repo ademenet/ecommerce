@@ -125,12 +125,16 @@ function rm_product($name)
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$query = "DELETE FROM jeux WHERE nom = \"".$name."\";";
 	$result = mysqli_query($base, $query);
-/*	while ($row = mysqli_fetch_assoc($result))
+}
+
+function verifie_cons($cons)
+{
+	foreach (explode(":", $_POST['platform']) as $plat)
 	{
-		echo "<br />";
-		print_r($row);
+		if ($plat === $cons)
+			return 1;
 	}
- */
+	return 0;
 }
 
 function inscription_user() {
@@ -176,5 +180,4 @@ function display_users_for_admin_modify_delete($login) {
 		echo "</tr></table>";
 	}
 }
-
  ?>
