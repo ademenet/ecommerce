@@ -12,6 +12,6 @@ inscription_user();
 	</head>
 	<body>
 		<?php require_once('includes/inscription-form.php'); ?>
-		<p><a href="index.php"><< retour à l'accueil</a></p>
+		<p><a href="index.php" style="color:#42A5F5"><< retour à l'accueil</a></p>
 	</body>
 </html>
