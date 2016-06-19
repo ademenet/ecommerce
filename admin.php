@@ -1,31 +1,23 @@
 <?php
-// On demarre une session pour l'admin
 session_start();
 require_once('./includes/header.php');
-include("./includes/functions.php");
 
-// On appelle le header
  ?>
 
-<!-- On charge le CSS sur cette page -->
 <link rel="stylesheet" href="../css/master.css">
-<!-- Le contenu du panel admin -->
 <div class="admin-panel">
-	<h1>Bienvenue <?php echo $_SESSION['admin']; ?></h1>
+	<h1>Bienvenue <?php echo $_SESSION['userinfo']['login']; ?></h1>
 	<div class="">
 
 <?php
-// On repere si on est bien en session d'admin
-if (isset($_SESSION['admin'])) {
+if ($_SESSION['userinfo']['admin'] !== "") {
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'add') {
 			if (isset($_POST['submit'])) {
 				if ($_POST['title'] && $_POST['desc'] && $_POST['price']) {
 					add_product($_POST['title'], $_POST['price'], $_POST['desc'],0,0,0,1,"../zbri","foot", 42);
-					// requete pour mettre les infos dedans
 				} else {
 					echo "PAS OK\n";
-					// message d'erreur
 				}
 			}
  ?>

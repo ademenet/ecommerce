@@ -1,6 +1,6 @@
 <?php
 
-function security_check($string) {
+function secu($string) {
 	if(ctype_digit($string)) {
 		$string = intval($string);
 	}
