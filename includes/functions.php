@@ -169,12 +169,7 @@ function inscription_user() {
 				alert("Le format de votre mail n'est pas valide");
 			} else {
 				if (check_user(secu($_POST['usrlog']))) {
-<<<<<<< HEAD
-					$print_r($_POST);
-					if (add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress'])) === FALSE) {
-=======
 					if (add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress'])) == FALSE) {
->>>>>>> 2e7a00227761a3a1ddc054c9c27108bf7df1a40f
 						alert("Oups, we have a problem here");
 					} else {
 						if ($_SESSION['userinfo'] !== "" && $_SESSION['userinfo']['admin'] == 1) {
