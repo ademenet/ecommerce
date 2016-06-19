@@ -1,21 +1,21 @@
 <?php
 require_once('./includes/header.php');
-include('includes/functions.php');
 
 $query = "SELECT * FROM jeux";
-$id = 0;
-	if (isset($_GET['modifie']))
+print_r($_GET);
+	if (isset($_GET['selection']))
 	{
 		$base = mysqli_connect('localhost', 'root', '', 'myDB');
-		$query = "SELECT * from jeux WHERE id =".intval($id);
+		$query = "SELECT * from jeux WHERE nom =\"".$_GET['selection']."\"";
+		print($query);
 		$ret = mysqli_query($base, $query);
 		$donne = mysqli_fetch_array($ret);
 		$nom = $donne['nom'];
-		$stock = $donne['nom'];
-		$prix = $donne['nom'];
-		$description = $donne['nom'];
-		$genre = $donne['nom'];
-		$img = $donne['nom'];
+		$stock = $donne['stock'];
+		$prix = $donne['prix'];
+		$description = $donne['description'];
+		$genre = $donne['genre'];
+		$img = $donne['img'];
 	
 	}
 	if (isset($_POST['submit']))
@@ -32,6 +32,7 @@ $id = 0;
 			echo "<div class=\"box-alert\">Vous devez selectionner le stock disponible</div>";
 		else
 		{
+			rm_product($donne['nom']);
 			add_product($_POST['nom'], $_POST['prix'], $_POST['description'], verifie_cons("ps4"), verifie_cons("xbox"), verifie_cons("gamecube"), verifie_cons("ds"), $_POST['img'], $_POST['genre'], $_POST['stock']);
 		echo "<div class=\"box-valid\">Le jeux ".$_POST['nom']."a été ajouter avec succes</div>";
 		echo "<script>setTimeout(\"document.location.href = 'index.php';\",10000);</script>";
@@ -39,11 +40,6 @@ $id = 0;
 	}
 ?>
 <!DOCTYPE HTML>
-<html>
-	<head >
-		<title>Boutique</title>
-		<link rel="stylesheet" href="css/boutique.css" />
-	</head>
 	<body>
 		<div class = "menu_boutique">
 			<p>Categorie</p>
@@ -51,16 +47,17 @@ $id = 0;
 			<a href="ajouter_article.php"><p class="arcade">Ajouter un article</p></a>
 			<a href="?selection=modifier"><p class="arcade">modifier un article</p></a>
 		</div>
+		<h3>Modifier <?php echo $donne['nom'];?></h3>
 		<div class="login-form">
 		<h3>Completer les information du jeux a ajouter</h3>
 		<form action="" method="POST">
-			<label >Nom du jeux :<input type="text" name="nom"/></label>
-			<label >Stock de jeux :<input type="text" name="stock"/></label>
-			<label >prix :<input type="text" name="prix"/></label>
-			<label >Plaforme compatible :<input type="text" name="platform" value ="ps4:xbox:etc..."/></label>
-			<label >description :<input type="text" name="description" class="description"/></label>
-			<label >Genre du jeux :<input type="text" name="genre"/></label>
-			<label >path de la vignette :<input type="text" name="img"/></label>
+		<label >Nom du jeux :<input type="text" name="nom" value="<?php echo "$nom";?>"/></label>
+			<label >Stock de jeux :<input type="text" name="stock"  value="<?php echo "$stock";?>"/></label>
+			<label >prix :<input type="text" name="prix" value="<?php echo "$prix";?>"/></label>
+			<label >Plaforme compatible :<input type="text" name="platform" value="<?php echo"$nom";?>"/></label>
+			<label >description :<input type="text" name="description" class="description" value="<?php echo "$description";?>"/></label>
+			<label >Genre du jeux :<input type="text" name="genre" value="<?php echo "$genre";?>"/></label>
+			<label >path de la vignette :<input type="text" name="img" value="<?php echo "$img"?>"/></label>
 			<input type="submit" name="submit" id="" value="Ajouter" />
 		</form>
 		</div>

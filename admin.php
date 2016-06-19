@@ -1,9 +1,8 @@
 <?php
 // On demarre une session pour l'admin
 session_start();
-require_once('./includes/header.php');
-include("./includes/functions.php");
 
+require_once('./includes/header.php');
 // On appelle le header
  ?>
 
@@ -56,16 +55,16 @@ if (isset($_SESSION['admin'])) {
 
 		}
 		else {
-			ft_error("déso");
+			ft_error();
 		}
 	}
 } else {
 	header('Location: ../index.php');
 }
  ?>
-		<a href="?action=add">Ajouter un produit</a>
-		<a href="?action=modify">Modifier un produit</a>
-		<a href="?action=delete">Supprimer un produit</a>
+		<a href="ajouter_article.php">Ajouter un produit</a>
+		<a href="modifier_article.php">Modifier un produit</a>
+		<a href="rm_add>php">Supprimer un produit</a>
 	</div>
 
 </div>
