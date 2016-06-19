@@ -21,7 +21,7 @@ function add_product($name, $price, $desc, $ps4, $xbox, $gamecube, $ds, $img, $g
 {
 	if (!isset($name) || !isset($price) || !isset($stock))
 		return;
-	$base = mysqli_connect('localhost', 'root', '', 'myDB');
+	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
 	$row = mysqli_query($base, "SELECT * FROM jeux");
 	$id = mysqli_num_rows($row) + 1;
 	$query = "INSERT INTO jeux VALUES('".$id. "','" . $name . "','".$stock."','". $price. "','NULL','". $ps4."','".$xbox. "','".$gamecube."','". $ds . "','". $desc. "','". $genre . "','". $img."')";
