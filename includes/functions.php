@@ -138,7 +138,7 @@ function verifie_cons($cons)
 }
 
 function inscription_user() {
-	if ($_POST['submit'] === "Valider" && $_SESSION['userinfo'] == "") {
+	if ($_POST['submit'] === "Valider" && ($_SESSION['userinfo'] == "" || $_SESSION['userinfo']['admin'] == 1)) {
 		if ($_POST['usrlog'] && $_POST['usrprenom'] && $_POST['usrnom'] && $_POST['usraddress'] && $_POST['usrmail'] && $_POST['usrpwd'])
 		{
 			if (!filter_var($_POST['usrmail'], FILTER_VALIDATE_EMAIL)) {
@@ -146,7 +146,7 @@ function inscription_user() {
 			} else {
 				if (check_user(secu($_POST['usrlog']))) {
 					add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress']));
-					if ($_SESSION['userinfo']['admin'] == 1) {
+					if ($_SESSION['userinfo'] !== "" && $_SESSION['userinfo']['admin'] == 1) {
 						valid("Vous venez d'ajouter ".$_POST['usrlog']." sur &#10084 games");
 						echo "<script>setTimeout(\"document.location.href = 'admin.php';\",2000);</script>";
 					} else {
@@ -155,7 +155,6 @@ function inscription_user() {
 						echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 					}
 				} else {
-					echo "CHOUCHOU";
 					alert("Votre nom d'utilisateur n'est pas disponible");
 				}
 			}

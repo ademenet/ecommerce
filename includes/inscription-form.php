@@ -14,7 +14,6 @@
 							echo "<script>setTimeout(\"document.location.href = 'admin.php';\",2000);</script>";
 						}
 					} else {
-						echo "CELUILA ???";
 						alert("Votre nom d'utilisateur n'est pas disponible");
 					}
 				}
