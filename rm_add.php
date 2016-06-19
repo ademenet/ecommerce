@@ -1,11 +1,14 @@
 <?php
-if ($_POST['submit'] == "Suprimer" && isset($_GET['rm']))
-{
-	rm_product($_GET['rm']);
-}
-else if ($_POST['submit'] == "modifier" && isset($_GET['rm']))
+
+if ($_POST['submit'] == "modifier" && isset($_GET['rm']))
 {
 	header("Location: modifier_article.php?selection=".$_GET['rm']);
+}
+require_once('./includes/header.php');
+if ($_POST['submit'] == "Supprimer" && isset($_GET['rm']))
+{
+	print("wesh");
+	rm_product($_GET['rm']);
 }
 else if (isset($_GET['rm_genre']))
 {
@@ -24,7 +27,6 @@ else if (isset($_GET['rm_genre']))
 		}
 	}
 	$query2 = "UPDATE global SET conf = '".$new."'";
-	print ($new);
 	$ret = mysqli_query($base, $query2);
 }
 else if (isset($_GET['ajouter']))
@@ -36,7 +38,6 @@ else if (isset($_GET['ajouter']))
 	$query2 = "UPDATE global SET conf = '".$new."'";
 	$ret = mysqli_query($base, $query2);
 }
-require_once('./includes/header.php');
 $query = "SELECT * FROM jeux";
 ?>
 <!DOCTYPE HTML>
@@ -48,9 +49,9 @@ $query = "SELECT * FROM jeux";
 	<body>
 		<div class = "menu_boutique">
 			<p>Categorie</p>
-			<a href="?selection=supprimer"><p class="arcade">Supprimer un article</p></a>
-			<a href="ajouter_article.php"><p class="arcade">Ajouter un article</p></a>
-			<a href="modifier_article.php"><p class="arcade">modifier un article</p></a>
+			<a href="rm_add.php">Ajouter un produit</a>
+			<a href="modifier_article.php">Modifier un produit</a>
+			<a href="rm_add.php">Supprimer un produit</a>
 			<div>
 				<form action="" method="get" accept-charset="utf-8">
 					SUPRIMER CATEGORIE

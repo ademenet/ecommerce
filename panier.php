@@ -9,6 +9,10 @@ if ($_GET['submit'] == "Supprimer" && isset($_SESSION['userinfo']['login']))
 	$query = "UPDATE user SET panier ='".$string."' WHERE login = '".$_SESSION['userinfo']['login']."'";
 	$ret = mysqli_query($base, $query);
 }
+else if ($_GET['submit'] == "Supprimer" && !isset($_SESSION['userinfo']['login']))
+{
+	$_SESSION['panier'] = array();
+}
 else if ($_GET['submit'] == "Valider" && isset($_SESSION['userinfo']['login']))
 {
 	$base = mysqli_connect('localhost', 'root', '', 'myDB');
