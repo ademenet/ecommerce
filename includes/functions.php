@@ -72,7 +72,7 @@ function mod_user($oldlogin, $login, $passwd, $prenom, $nom, $tel, $mail, $adr, 
 			$admin = 0;
 		}
 		$passwd = hash('whirlpool', $passwd);
-		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+		$base = mysqli_connect('localhost', 'root', '', 'myDB');
 		$query = "UPDATE user SET login='$login', passwd='$passwd', prenom='$prenom', nom='$nom', telephone='$tel', mail='$mail', adresse='$adr', admin='$admin' WHERE login='$oldlogin'";
 		return mysqli_query($base, $query);
 	} else {
@@ -83,8 +83,8 @@ function mod_user($oldlogin, $login, $passwd, $prenom, $nom, $tel, $mail, $adr, 
 function add_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr) {
 	//if (isset($login) && isset($passwd) && isset($prenom) && isset($nom) && isset($mail) && isset($adr)) {
 		$passwd = hash('whirlpool', $passwd);
-		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
-		$query = "INSERT INTO user VALUES ('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."', '0')";
+		$base = mysqli_connect('localhost', 'root', '', 'myDB');
+		$query = "INSERT INTO user VALUES ('".$login."','".$passwd."','".$prenom."','".$nom."','".$tel."','".$mail."','".$adr."', '0', '')";
 		return mysqli_query($base, $query);
 //	} else {
 //		return FALSE;
@@ -169,8 +169,12 @@ function inscription_user() {
 				alert("Le format de votre mail n'est pas valide");
 			} else {
 				if (check_user(secu($_POST['usrlog']))) {
+<<<<<<< HEAD
 					$print_r($_POST);
 					if (add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress'])) === FALSE) {
+=======
+					if (add_user(secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress'])) == FALSE) {
+>>>>>>> 2e7a00227761a3a1ddc054c9c27108bf7df1a40f
 						alert("Oups, we have a problem here");
 					} else {
 						if ($_SESSION['userinfo'] !== "" && $_SESSION['userinfo']['admin'] == 1) {

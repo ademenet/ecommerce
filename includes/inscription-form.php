@@ -47,15 +47,21 @@
 			if (!filter_var($_POST['usrmail'], FILTER_VALIDATE_EMAIL)) {
 				alert("Le format de votre mail n'est pas valide");
 			} else {
-				if ($_POST['usrlog'] === $_SESSION['userinfo']['login'] || check_user(secu($_POST['usrlog']))) {
+				if ($_POST['usrlog'] === $_SESSION['userinfo']['login'] || check_user(secu($_POST['usrlog'])))
+				{
+					if ($_SESSION['userinfo']['admin'] == 1) {
+						$adm = 'admin';
+					} elseif ($_SESSION['userinfo']['admin'] == 0) {
+						$adm = 'user';
+					}
 					if (mod_user(secu($_SESSION['userinfo']['login']), secu($_POST['usrlog']), secu($_POST['usrpwd']), secu($_POST['usrprenom']), secu($_POST['usrnom']), secu($_POST['usrtel']), secu($_POST['usrmail']), secu($_POST['usraddress']), 'user') === FALSE) {
 						alert("Oups, un problème s'est produit. Veuillez recommencer !");
 					} else {
-						$_SESSION['userinfo'] = get_userinfos(secu($_POST['usrlog']));
 						valid($_SESSION['userinfo']['login']." : vous venez de modifier vos informations");
 						echo "<script>setTimeout(\"document.location.href = 'account.php';\",2000);</script>";
 					}
-				} else {
+				}
+				else {
 					alert("Votre nom d'utilisateur n'est pas disponible");
 				}
 			}

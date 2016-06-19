@@ -52,8 +52,8 @@ $insert_genre = "INSERT INTO global VALUES('arcade:aventure:sport')";
 
 $admpwd = hash('whirlpool', "123");
 
-$insert_admin = "INSERT INTO user (login, passwd, prenom, nom, telephone, mail, adresse, admin) VALUES
-	('admin','".$admpwd."','','','','','', '1')";
+$insert_admin = "INSERT INTO user (login, passwd, prenom, nom, telephone, mail, adresse, admin, panier) VALUES
+	('admin','".$admpwd."','','','','','', '1', '')";
 
 $base = mysqli_connect('localhost', 'root', '');
 mysqli_query($base, "CREATE DATABASE myDB");

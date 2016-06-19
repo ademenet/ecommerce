@@ -34,8 +34,6 @@ if ($_POST['submit'] === "Connexion") {
 			<p>Veuillez entrer votre mot de passe :<input type="password" name="usrpwd" value=""></p>
 			<input type="submit" name="submit" value="Connexion">
 		</form>
+		<p><a href="index.php" style="color:#F5F5F5"><< retour à l'accueil</a></p>
 	</div>
-	<p>
-		<a href="index.php"><< retour à l'accueil</a>
-	</p>
 </html>
