@@ -11,7 +11,7 @@ if ($_POST['submit'] === "Connexion") {
 			if (!check_passwd(secu($_POST['usrlog']), secu($_POST['usrpwd']))) {
 				alert("#déso, ce n'est pas le bon mot de passe");
 			} else {
-				$_SESSION['userinfo'] = get_userinfos($_POST['usrlog']);
+				$_SESSION['userinfo'] = get_userinfos(secu($_POST['usrlog']));
 				valid("Bienvenue ".$_SESSION['userinfo']['login']." sur we&#10084games");
 				echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 			}
