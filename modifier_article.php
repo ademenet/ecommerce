@@ -2,12 +2,10 @@
 require_once('./includes/header.php');
 
 $query = "SELECT * FROM jeux";
-print_r($_GET);
 	if (isset($_GET['selection']))
 	{
 		$base = mysqli_connect('localhost', 'root', '', 'myDB');
 		$query = "SELECT * from jeux WHERE nom =\"".$_GET['selection']."\"";
-		print($query);
 		$ret = mysqli_query($base, $query);
 		$donne = mysqli_fetch_array($ret);
 		$nom = $donne['nom'];
@@ -43,9 +41,9 @@ print_r($_GET);
 	<body>
 		<div class = "menu_boutique">
 			<p>Categorie</p>
-			<a href="?selection=supprimer"><p class="arcade">Supprimer un article</p></a>
-			<a href="ajouter_article.php"><p class="arcade">Ajouter un article</p></a>
-			<a href="?selection=modifier"><p class="arcade">modifier un article</p></a>
+			<a href="ajouter_article.php">Ajouter un produit</a>
+			<a href="rm_add.php">Modifier un produit</a>
+			<a href="rm_add.php">Supprimer un produit</a>
 		</div>
 		<h3>Modifier <?php echo $donne['nom'];?></h3>
 		<div class="login-form">

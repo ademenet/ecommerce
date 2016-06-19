@@ -38,7 +38,7 @@ if ($_SESSION['userinfo']['admin'] !== "") {
 }
  ?>
 		<a href="ajouter_article.php">Ajouter un produit</a>
-		<a href="modifier_article.php">Modifier un produit</a>
+		<a href="rm_add.php">Modifier un produit</a>
 		<a href="rm_add.php">Supprimer un produit</a>
 		<?php require_once('./admin-users.php') ?>
 	</div>

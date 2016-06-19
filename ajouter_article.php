@@ -31,9 +31,9 @@ $query = "SELECT * FROM jeux";
 	<body>
 		<div class = "menu_boutique">
 			<p>Categorie</p>
-			<a href="?selection=supprimer"><p class="arcade">Supprimer un article</p></a>
-			<a href="ajouter_article.php"><p class="arcade">Ajouter un article</p></a>
-			<a href="?selection=modifier"><p class="arcade">modifier un article</p></a>
+			<a href="ajouter_article.php">Ajouter un produit</a>
+			<a href="rm_add.php">Modifier un produit</a>
+			<a href="rm_add.php">Supprimer un produit</a>
 		</div>
 		<div class="login-form">
 		<h3>Completer les information du jeux a ajouter</h3>
