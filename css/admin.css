@@ -1,3 +1,24 @@
-.admin-panel {
-	
+.admin-panel a {
+	color: #0091ea;
+	text-decoration: none;
+}
+.admin-panel a:hover, .admin-panel a:active {
+	color: #42A5F5;
+}
+.admin-panel a:link, .admin-panel a:visited {
+	color: #0091ea;
+}
+.admin-panel td {
+	witdh: 1000px;
+	background-color: #e1f5fe;
+}
+.user-account a {
+	color: #0091ea;
+	text-decoration: none;
+}
+.user-account a:hover, .user-account a:active {
+	color: #42A5F5;
+}
+.user-account a:link, .user-account a:visited {
+	color: #0091ea;
 }

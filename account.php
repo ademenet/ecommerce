@@ -2,10 +2,12 @@
 
 <?php
 if (isset($_GET['action'])) {
-	echo "<script>confirm(\"Êtes-vous sûr de vouloir supprimer votre compte ?\")</script>";
-	echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
-	del_user($_SESSION['userinfo']['login']);
-	$_SESSION['userinfo'] = "";
+	if ($_GET['action'] == 'deluser') {
+		echo "<script>confirm(\"Êtes-vous sûr de vouloir supprimer votre compte ?\")</script>";
+		echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
+		del_user($_SESSION['userinfo']['login']);
+		$_SESSION['userinfo'] = "";
+	}
 }
  ?>
 
@@ -35,8 +37,10 @@ if (isset($_GET['action'])) {
 				<td><?php echo $_SESSION['userinfo']['tel']; ?></td>
 			</tr>
 		</table>
-		<a href="?action=deluser">Supprimer mon compte</a>
-		<?php } ?>
+		<?php if ($_SESSION['userinfo']['admin'] != 1) {
+				echo "<a href=\"?action=deluser\">Supprimer mon compte</a>";
+			}
+		} ?>
 	</div>
 </body>
 

@@ -1,8 +1,3 @@
-body
-{
-	background-color: #B0FFFF;
-	text-align:center;
-}
 .object
 {
 	float:left;
@@ -39,7 +34,6 @@ body
 {
 	margin:10px;
 }
-
 .vignette
 {
 	margin:20px;
@@ -48,7 +42,6 @@ body
 	width:90%;
 	height:50px;
 }
-
 .arcade
 {
 	margin:auto;
@@ -70,7 +63,7 @@ body
 
 .ajouter_panier:visited
 {
-color:black;
+	color:black;
 	border:2px solid black;
 	border-radius:9px;
 	display:block;
