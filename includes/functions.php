@@ -1,11 +1,12 @@
 <?php
 
-function security_check($string) {
+function secu($string) {
 	if(ctype_digit($string)) {
 		$string = intval($string);
 	}
 	else {
-		$string = mysql_real_escape_string($string);
+		$base = mysqli_connect('localhost', 'root', '', 'myDB');
+		$string = mysqli_real_escape_string($base, $string);
 		$string = addcslashes($string, '%_');
 	}
 	return $string;
@@ -52,7 +53,7 @@ function add_user($login, $passwd, $prenom, $nom, $tel, $mail, $adr) {
 
 function check_user($login) {
 	if (isset($login)) {
-		$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+		$base = mysqli_connect('localhost', 'root', '', 'myDB');
 		$search = mysqli_query($base, "SELECT login FROM user WHERE login = '$login'");
 		$row = mysqli_num_rows($search);
 		if ($row >= 1) {
@@ -66,7 +67,7 @@ function check_user($login) {
 }
 
 function check_login($login) {
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$search = mysqli_query($base, "SELECT login FROM user WHERE login = '$login'");
 	while($data = mysqli_fetch_assoc($search)) {
 		if ($data['login'] === $login) {
@@ -78,7 +79,7 @@ function check_login($login) {
 }
 
 function check_passwd($login, $passwd) {
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$search = mysqli_query($base, "SELECT passwd FROM user WHERE login = '$login'");
 	$passwd = hash('whirlpool', $passwd);
 	$data = mysqli_fetch_assoc($search);
@@ -90,7 +91,7 @@ function check_passwd($login, $passwd) {
 }
 
 function get_userinfos($login) {
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$search = mysqli_query($base, "SELECT * FROM user WHERE login = '$login'");
 	$data = mysqli_fetch_assoc($search);
 	mysqli_free_result($search);
@@ -98,14 +99,14 @@ function get_userinfos($login) {
 }
 
 function del_user($login) {
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$search = mysqli_query($base, "DELETE FROM user WHERE login = '$login'");
 	return TRUE;
 }
 
 function rm_product($name)
 {
-	$base = mysqli_connect('localhost', 'root', 'peer2peer', 'myDB');
+	$base = mysqli_connect('localhost', 'root', '', 'myDB');
 	$query = "DELETE FROM jeux WHERE nom = \"".$name."\";";
 	$result = mysqli_query($base, $query);
 }

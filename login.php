@@ -7,12 +7,12 @@ $_SESSION['userinfo'] = "";
 
 if ($_POST['submit'] === "Connexion") {
 	if (isset($_POST['usrlog']) && isset($_POST['usrpwd']) && !empty($_POST['usrlog']) && !empty($_POST['usrpwd'])) {
-		if (check_login($_POST['usrlog'])) {
-			if (!check_passwd($_POST['usrlog'], $_POST['usrpwd'])) {
+		if (check_login(secu($_POST['usrlog']))) {
+			if (!check_passwd(secu($_POST['usrlog']), secu($_POST['usrpwd']))) {
 				alert("#déso, ce n'est pas le bon mot de passe");
 			} else {
 				$_SESSION['userinfo'] = get_userinfos($_POST['usrlog']);
-				valid("Bienvenue ".$_SESSION['userinfo']." sur we&#10084games");
+				valid("Bienvenue ".$_SESSION['userinfo']['login']." sur we&#10084games");
 				echo "<script>setTimeout(\"document.location.href = 'index.php';\",2000);</script>";
 			}
 		} else {
@@ -35,4 +35,7 @@ if ($_POST['submit'] === "Connexion") {
 			<input type="submit" name="submit" value="Connexion">
 		</form>
 	</div>
+	<p>
+		<a href="index.php"><< retour à l'accueil</a>
+	</p>
 </html>
