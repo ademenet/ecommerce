@@ -29,7 +29,10 @@ if (isset($_GET['mod']))
 			$count++;
 		}
 	}
-	else if 
+	else
+	{
+	
+	}
 }
 ?>
 <head>
