@@ -55,7 +55,7 @@ $admpwd = hash('whirlpool', "123");
 $insert_admin = "INSERT INTO user (login, passwd, prenom, nom, telephone, mail, adresse, admin, panier) VALUES
 	('admin','".$admpwd."','','','','','', '1', '')";
 
-$base = mysqli_connect('localhost', 'root', '');
+$base = mysqli_connect('localhost', 'root', 'root');
 mysqli_query($base, "CREATE DATABASE myDB");
 mysqli_close($base);
 $base = mysqli_connect('localhost', 'root', '', 'myDB');
